@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devarshi Nichite — IT Support &amp; Systems Infrastructure</title>
+<meta name="description" content="Devarshi Nichite — IT Support Engineer specializing in Windows/Linux administration, virtualization, networking, and AWS cloud infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1220;
+    --panel: #121B29;
+    --panel-2: #16212F;
+    --line: #223047;
+    --text: #E7EDF3;
+    --muted: #8CA0B3;
+    --muted-2: #5E7286;
+    --amber: #F2A65A;
+    --cyan: #6FD3C7;
+    --ok: #6FD3C7;
+    --radius: 10px;
+    --maxw: 1120px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(242,166,90,0.06), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, rgba(111,211,199,0.05), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber); color:#0B1220;}
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* Background grid texture */
+  .grid-bg{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image: radial-gradient(1200px 800px at 50% 0%, black, transparent 75%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,18,32,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;}
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px var(--cyan); flex:none;
+    animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .navlinks{display:flex; align-items:center; gap:2px;}
+  .navlinks a{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted);
+    padding:8px 14px; border-radius:6px; transition:color .15s, background .15s;
+  }
+  .navlinks a:hover{color:var(--text); background:var(--panel);}
+  .navlinks a .idx{color:var(--muted-2); margin-right:6px;}
+  .nav-cta{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    border:1px solid var(--line); padding:8px 16px; border-radius:6px;
+    color:var(--amber); transition:border-color .15s, background .15s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{border-color:var(--amber); background:rgba(242,166,90,0.08);}
+  .menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:6px; color:var(--text); width:38px; height:38px; align-items:center; justify-content:center; cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 80px; position:relative;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--cyan);
+    border:1px solid rgba(111,211,199,0.3); background:rgba(111,211,199,0.06);
+    padding:6px 12px; border-radius:20px; margin-bottom:28px;
+  }
+  .eyebrow .b{width:6px; height:6px; border-radius:50%; background:var(--cyan);}
+
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(36px, 6vw, 64px);
+    line-height:1.06;
+    letter-spacing:-0.02em;
+    max-width:15ch;
+  }
+  .hero h1 .accent{color:var(--amber);}
+  .hero .role-line{
+    margin-top:20px; font-family:'JetBrains Mono', monospace; font-size:16px; color:var(--muted);
+    display:flex; align-items:center; gap:8px; min-height:24px;
+  }
+  .cursor{display:inline-block; width:8px; height:18px; background:var(--amber); animation:blink 1s steps(1) infinite;}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+
+  .hero p.lede{
+    margin-top:22px; max-width:56ch; color:var(--muted); font-size:16.5px;
+  }
+
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;}
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:14px; font-weight:500;
+    padding:13px 22px; border-radius:8px; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .15s, box-shadow .15s, background .15s, border-color .15s;
+    cursor:pointer; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--amber); color:#0B1220;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(242,166,90,0.25);}
+  .btn-ghost{border-color:var(--line); color:var(--text); background:var(--panel);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px);}
+
+  /* Status dashboard panel */
+  .status-panel{
+    margin-top:64px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    overflow:hidden;
+  }
+  .status-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 18px; border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted-2);
+  }
+  .status-head .dots{display:flex; gap:6px;}
+  .status-head .dots span{width:8px; height:8px; border-radius:50%; background:var(--line);}
+  .status-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr);
+  }
+  .stat{
+    padding:22px 18px; border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:700; color:var(--text);}
+  .stat .num span{color:var(--amber);}
+  .stat .label{font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted-2); margin-top:6px; letter-spacing:.02em;}
+
+  @media (max-width:760px){
+    .status-grid{grid-template-columns:repeat(2, 1fr);}
+    .stat:nth-child(2){border-right:none;}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:88px 0;}
+  .sec-head{margin-bottom:48px;}
+  .sec-tag{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--cyan);
+    letter-spacing:.06em; text-transform:uppercase;
+  }
+  .sec-title{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(26px, 4vw, 38px); margin-top:10px; letter-spacing:-0.01em;
+  }
+  .sec-sub{color:var(--muted); margin-top:12px; max-width:60ch; font-size:15.5px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:start;}
+  .about-text p{color:var(--muted); font-size:15.5px; margin-bottom:16px; max-width:56ch;}
+  .about-text p strong{color:var(--text); font-weight:600;}
+
+  .skill-modules{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .module{
+    border:1px solid var(--line); background:var(--panel); border-radius:8px; padding:16px 18px;
+    transition:border-color .15s, transform .15s;
+  }
+  .module:hover{border-color:var(--amber); transform:translateY(-2px);}
+  .module .mod-title{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--amber); letter-spacing:.03em;
+    display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  }
+  .module .mod-title::before{content:"◆"; font-size:9px;}
+  .module .mod-items{color:var(--muted); font-size:13.5px; line-height:1.65;}
+
+  /* ---------- EXPERIENCE (log style) ---------- */
+  .log{border-left:1px solid var(--line); margin-left:6px;}
+  .log-entry{position:relative; padding:0 0 44px 34px;}
+  .log-entry:last-child{padding-bottom:0;}
+  .log-entry::before{
+    content:""; position:absolute; left:-6.5px; top:4px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--cyan);
+  }
+  .log-entry.current::before{background:var(--amber); border-color:var(--amber); box-shadow:0 0 0 4px rgba(242,166,90,0.15);}
+  .log-meta{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted-2);
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:8px;
+  }
+  .badge{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; padding:2px 9px; border-radius:20px;
+    border:1px solid rgba(111,211,199,0.35); color:var(--cyan); background:rgba(111,211,199,0.06);
+  }
+  .badge.live{border-color:rgba(242,166,90,0.4); color:var(--amber); background:rgba(242,166,90,0.08);}
+  .log-role{font-family:'Space Grotesk', sans-serif; font-size:19px; font-weight:600;}
+  .log-org{color:var(--muted); font-size:14px; margin-top:2px; margin-bottom:14px;}
+  .log-list{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .log-list li{color:var(--muted); font-size:14.5px; padding-left:18px; position:relative;}
+  .log-list li::before{content:"›"; position:absolute; left:0; color:var(--cyan); font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- PROJECTS ---------- */
+  .project-card{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--panel);
+    padding:28px 30px; margin-bottom:20px;
+  }
+  .project-head{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:16px;}
+  .project-title{font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:600;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .chip{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted);
+    border:1px solid var(--line); padding:4px 10px; border-radius:5px; background:var(--bg);
+  }
+  .project-card .log-list li::before{content:"$"; color:var(--amber);}
+
+  /* Education / cert row */
+  .creds{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;}
+  .cred-card{border:1px solid var(--line); border-radius:8px; padding:20px 22px; background:var(--panel);}
+  .cred-card .cred-tag{font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.05em;}
+  .cred-card .cred-title{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px; margin-top:8px;}
+  .cred-card .cred-sub{color:var(--muted); font-size:13.5px; margin-top:4px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    border:1px solid var(--line); border-radius:14px;
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    padding:52px 44px; text-align:center; position:relative; overflow:hidden;
+  }
+  .contact-panel::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(500px 260px at 50% 0%, rgba(242,166,90,0.08), transparent 70%);
+    pointer-events:none;
+  }
+  .contact-panel .sec-tag{display:block;}
+  .contact-panel h2{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:clamp(24px,4vw,34px); margin:12px 0 14px;}
+  .contact-panel p{color:var(--muted); max-width:52ch; margin:0 auto 30px; font-size:15px;}
+  .contact-email{
+    font-family:'JetBrains Mono', monospace; font-size:16px; color:var(--amber);
+    display:inline-block; margin-bottom:34px; border-bottom:1px dashed rgba(242,166,90,0.4); padding-bottom:2px;
+  }
+  .socials{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:8px;}
+  .social-btn{
+    width:46px; height:46px; border-radius:10px; border:1px solid var(--line); background:var(--bg);
+    display:flex; align-items:center; justify-content:center; transition:border-color .15s, transform .15s, color .15s;
+    color:var(--muted);
+  }
+  .social-btn:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-3px);}
+  .social-btn svg{width:20px; height:20px;}
+
+  footer{
+    border-top:1px solid var(--line); padding:28px 0; margin-top:20px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted-2);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  /* Scroll reveal */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .cursor, .brand .dot{animation:none;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .creds{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    .navlinks{display:none; position:absolute; top:68px; left:0; right:0; background:var(--bg);
+      border-bottom:1px solid var(--line); flex-direction:column; padding:10px; gap:2px;}
+    .navlinks.open{display:flex;}
+    .nav-cta{display:none;}
+    .menu-btn{display:flex;}
+    .status-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-panel{padding:38px 22px;}
+  }
+  @media (max-width:520px){
+    .skill-modules{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="brand"><span class="dot"></span>DEVARSHI<span style="color:var(--muted-2)">.NICHITE</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#home"><span class="idx">01</span>Home</a>
+      <a href="#about"><span class="idx">02</span>About</a>
+      <a href="#experience"><span class="idx">03</span>Experience</a>
+      <a href="#projects"><span class="idx">04</span>Projects</a>
+      <a href="#contact"><span class="idx">05</span>Contact</a>
+    </div>
+    <a href="Devarshi_Nichite_Resume.pdf" download class="nav-cta">↓ resume.pdf</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4H16M2 9H16M2 14H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="b"></span>OPEN TO CLOUD SUPPORT · JR, SYSADMIN · IT INFRASTRUCTURE ROLES · SUPPORT ENGINEER</div>
+      <h1>Keeping systems <span class="accent">online</span>, secure, and easy to run.</h1>
+      <div class="role-line mono">
+        <span id="typeTarget"></span><span class="cursor"></span>
+      </div>
+      <p class="lede">Support Engineer based in Maharashtra, India, with hands-on experience across Windows/Linux administration, networking, virtualization, and AWS cloud fundamentals — built on real government IT operations and a self-run homelab.</p>
+
+      <div class="hero-actions">
+        <a href="Devarshi_Nichite_Resume.pdf" download class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5V10.5M8 10.5L4.5 7M8 10.5L11.5 7M2 13.5H14" stroke="#0B1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download resume
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a href="#experience" class="btn btn-ghost">View experience</a>
+      </div>
+
+      <div class="status-panel reveal">
+        <div class="status-head">
+          <span>system_status.log</span>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="status-grid">
+          <div class="stat">
+            <div class="num"><span>40+</span></div>
+            <div class="label">SYSTEMS SUPPORTED DAILY</div>
+          </div>
+          <div class="stat">
+            <div class="num"><span>50+</span></div>
+            <div class="label">IT ASSETS MANAGED</div>
+          </div>
+          <!--
+          <div class="stat">
+            <div class="num"><span>2+</span></div>
+            <div class="label">YEARS IN IT SUPPORT</div>
+          </div>-->
+          <div class="stat">
+            <div class="num">AWS <span>✓</span></div>
+            <div class="label">CERTIFIED CLOUD PRACTITIONER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// 02 — about</div>
+        <h2 class="sec-title">From help-desk and support to a self-built server rack.</h2>
+        <p class="sec-sub">A snapshot of how I work and what I work with.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I started in IT support solving day-to-day problems for real users — <strong>Windows updates, hardware faults, antivirus, backups</strong> — the unglamorous work that keeps an office running. That grounding taught me to diagnose calmly and document clearly, skills I still lean on.</p>
+          <p>Over time the work moved from hardware and OS issues toward <strong>application, database, and API problems</strong> — reading logs instead of guessing, tracing a bad query or a failed request back to what actually caused it.</p>
+          <p>On my own time, I run a <strong>Proxmox VE homelab</strong>: virtual machines, LXC containers, Docker workloads, and a small pile of self-hosted services, all reachable through a secured Cloudflare Tunnel. It's where I test the infrastructure ideas that a help-desk ticket doesn't leave room for.</p>
+          <p>I'm now an <strong>AWS Certified Cloud Practitioner</strong>, and I'm looking to move that hands-on foundation into a Cloud Support, Systems Administration, or IT Infrastructure role — somewhere I can support production systems and keep learning the cloud side properly.</p>
+        </div>
+        <div class="skill-modules reveal">
+          <div class="module">
+            <div class="mod-title">Languages &amp; databases</div>
+            <div class="mod-items">Python · Java · MySQL</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Frameworks &amp; libraries</div>
+            <div class="mod-items">Flask · Scikit-learn · Jupyter Notebook · Arduino IDE</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Support &amp; problem-solving</div>
+            <div class="mod-items">Root-Cause Analysis · Incident Triage · Escalation Handling · Client Communication</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Systems</div>
+            <div class="mod-items">Windows 10/11 · Ubuntu · Debian · Linux CLI · SSH</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Networking &amp; cloud</div>
+            <div class="mod-items">REST APIs · DNS/VPN/Firewall · AWS (IAM, EC2, S3, VPC, CloudWatch)</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Virtualization</div>
+            <div class="mod-items">Proxmox VE · Docker · LXC · Portainer · VirtualBox</div>
+          </div>
+          <div class="module">
+            <div class="mod-title">Tools</div>
+            <div class="mod-items">Git · Cloudflare Tunnel · TeamViewer · AnyDesk · Parsec · Recuva</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// 03 — experience</div>
+        <h2 class="sec-title">Where I've kept things running.</h2>
+      </div>
+
+      <div class="log reveal">
+        <div class="log-entry current">
+          <div class="log-meta">
+            <span class="badge live">DEC 2025 – JUN 2026</span>
+          </div>
+          <div class="log-role">IT Support Engineer / IT Supervisor</div>
+          <div class="log-org">NCC Directorate, Maharashtra</div>
+          <ul class="log-list">
+            <li>Supported daily IT operations for 40+ systems: troubleshooting, Windows updates, antivirus management, and preventive maintenance.</li>
+            <li>Managed inventory of 50+ IT assets, maintaining documentation for hardware, peripherals, and consumables.</li>
+            <li>Produced LAN infrastructure documentation and hardware/software requirements for an E-Office deployment.</li>
+            <li>Performed secure backup, restoration, and file recovery to support operational continuity.</li>
+            <li>Diagnosed and resolved Windows, software, hardware, and basic network issues for end users.</li>
+          </ul>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-meta">
+            <span class="badge">JAN 2024 – MAR 2025</span>
+          </div>
+          <div class="log-role">Freelance Technical Support (Remote)</div>
+          <div class="log-org">Self-employed</div>
+          <ul class="log-list">
+            <li>Delivered Windows and Linux support: OS installation, dual-boot configuration, software deployment, and remote troubleshooting.</li>
+            <li>Helped clients troubleshoot MySQL database issues, from connection errors to bad queries, alongside programming and script-related problems in their own projects.</li>
+            <li>Resolved OS-level issues and API integration problems, plus router, VPN, DNS, and firewall issues affecting security and reliability.</li>
+            <li>Explained fixes in plain language and closed most issues in a single session.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// 04 — projects</div>
+        <h2 class="sec-title">What I build when there's no ticket to close.</h2>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-head">
+          <div class="project-title">Enterprise Homelab Infrastructure</div>
+          <span class="badge live">ongoing</span>
+        </div>
+        <div class="stack-row">
+          <span class="chip">Proxmox VE</span>
+          <span class="chip">Docker</span>
+          <span class="chip">LXC</span>
+          <span class="chip">Portainer</span>
+          <span class="chip">Cloudflare Tunnel</span>
+          <span class="chip">Samba/NFS</span>
+        </div>
+        <ul class="log-list">
+          <li>Built a virtualized infrastructure on Proxmox VE hosting Linux VMs and LXC containers.</li>
+          <li>Deployed Docker workloads via Portainer, including Jellyfin, Pi-hole, Radarr, and Sonarr.</li>
+          <li>Configured Cloudflare Tunnel, DDNS, Samba/NFS shares, firewall rules, snapshots, and secure remote administration.</li>
+          <li>Ongoing sandbox for practicing Linux administration, containerization, networking, and cloud concepts.</li>
+        </ul>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-head">
+          <div class="project-title">Sha News — Fake News Detection</div>
+          <span class="badge">Resolved</span>
+        </div>
+        <div class="stack-row">
+          <span class="chip">Python</span>
+          <span class="chip">Flask</span>
+          <span class="chip">Scikit-learn</span>
+          <span class="chip">Pandas / NumPy</span>
+          <span class="chip">Jupyter Notebook</span>
+        </div>
+        <ul class="log-list">
+          <li>Built a web app that classifies news articles as real or fake using a trained machine learning model.</li>
+          <li>Used Pandas and NumPy for data preprocessing and feature preparation, with Jupyter Notebook for model development and experimentation.</li>
+          <li>Built the Flask frontend and backend to process user input and return predictions in real time.</li>
+          <li>Tested and debugged application functionality to improve reliability and prediction accuracy.</li>
+        </ul>
+      </div>
+
+      <div class="sec-head reveal" style="margin-top:56px; margin-bottom:24px;">
+        <div class="sec-tag">// education &amp; certification</div>
+      </div>
+      <div class="creds reveal">
+        <div class="module">
+          <div class="mod-title">Education</div>
+          <div class="cred-title">B.Sc. Information Technology</div>
+          <div class="mod-items">D.G. Ruparel College of Arts, Science and Commerce · 2020–2023 · CGPA 7.92/10</div>
+        </div>
+        <div class="module">
+          <div class="mod-title">Certification</div>
+          <div class="cred-title">AWS Certified Cloud Practitioner</div>
+          <div class="mod-items">ID: e35d233da23944a28832cd5c93296076 · Verified via Credly &amp; AWS</div>
+        </div>
+        <div class="module">
+          <div class="mod-title">Achievement</div>
+          <div class="cred-title">Top 4 Finish — DotTech Festival Hackathon (2023)</div>
+          <div class="mod-items">Built "Jungle Safari," a system developed in Java with JDBC, using NetBeans IDE.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <span class="sec-tag" style="text-align:center;">// 05 — contact</span>
+        <h2>Have an opening, or just want to talk infrastructure?</h2>
+        <p>I'm currently available for Cloud Support, Junior Systems Administration, Support engineer and IT Infrastructure roles. The fastest way to reach me is email — or grab the resume below.</p>
+        <a href="mailto:devarshinichite@yahoo.com" class="contact-email">devarshinichite@yahoo.com</a>
+        <div>
+          <a href="Devarshi_Nichite_Resume.pdf" download class="btn btn-primary" style="margin-bottom:30px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5V10.5M8 10.5L4.5 7M8 10.5L11.5 7M2 13.5H14" stroke="#0B1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download resume
+          </a>
+        </div>
+        <div class="socials">
+          <a class="social-btn" href="https://www.linkedin.com/in/devarshinichite/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+          </a>
+          <a class="social-btn" href="https://github.com/devarshinichite/" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.19c0 4.49 2.87 8.3 6.84 9.64.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.19C22 6.58 17.52 2 12 2z"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.instagram.com/devarshi._.09/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </a>
+          <a class="social-btn" href="https://x.com/milkgang09" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 10.4 20.9 2h-2.2l-6.1 7.2L7.6 2H2l7.6 11.1L2 22h2.2l6.6-7.6L16.4 22H22l-8.4-11.6zM11.2 13l-.8-1.1L4.9 3.6h2.9l4.9 6.9.8 1.1 6.4 9h-2.9L11.2 13z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> Devarshi Nichite</span>
+  <span>Maharashtra, India · +91-8975135689</span>
+  <span>This site is a made with the assistance of AI</span>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navlinks = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Typed role line
+  const roles = [
+    "Windows & Linux Administration",
+    "Cloud Infrastructure (AWS)",
+    "Networking & Virtualization",
+    "IT Support & Operations"
+  ];
+  const target = document.getElementById('typeTarget');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    target.textContent = roles[0];
+  } else {
+    let ri = 0, ci = 0, deleting = false;
+
+    function tick(){
+      const word = roles[ri];
+      if (!deleting){
+        ci++;
+        target.textContent = word.slice(0, ci);
+        if (ci === word.length){ deleting = true; setTimeout(tick, 1400); return; }
+      } else {
+        ci--;
+        target.textContent = word.slice(0, ci);
+        if (ci === 0){ deleting = false; ri = (ri + 1) % roles.length; }
+      }
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+    tick();
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
