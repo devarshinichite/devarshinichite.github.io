@@ -329,7 +329,8 @@
       <div class="role-line mono">
         <span id="typeTarget"></span><span class="cursor"></span>
       </div>
-      <p class="lede">Support Engineer based in Maharashtra, India, with hands-on experience across Windows/Linux administration, networking, virtualization, and AWS cloud fundamentals — built on real government IT operations and a self-run homelab.</p>
+      <p class="lede">IT Support Engineer transitioning into Cloud & DevOps with hands-on experience building and troubleshooting AWS infrastructure.
+        Experienced in Linux, networking, application deployment, and root-cause analysis, with practical AWS projects involving EC2, VPC, RDS, Secrets Manager, IAM, Nginx, Gunicorn, and WireGuard</p>
 
       <div class="hero-actions">
         <a href="Devarshi_Nichite_Resume.pdf" download class="btn btn-primary">
@@ -382,35 +383,44 @@
         </div>
         <div class="skill-modules reveal">
           <div class="module">
-            <div class="mod-title">Languages &amp; databases</div>
-            <div class="mod-items">HTML · CSS · Python · Java · MySQL</div>
+            <div class="mod-title">Languages &amp; Databases</div>
+            <div class="mod-items">Python · HTML · CSS · MySQL</div>
           </div>
+
           <div class="module">
-            <div class="mod-title">Frameworks &amp; libraries</div>
-            <div class="mod-items">Flask · Scikit-learn · Jupyter Notebook · Arduino IDE</div>
+            <div class="mod-title">Frameworks &amp; Web Servers</div>
+            <div class="mod-items">Flask · Nginx · Gunicorn · systemd · REST APIs</div>
           </div>
+
           <div class="module">
-            <div class="mod-title">Support &amp; problem-solving</div>
-            <div class="mod-items">Root-Cause Analysis · Incident Triage · Escalation Handling · Client Communication</div>
+            <div class="mod-title">Cloud &amp; Infrastructure</div>
+            <div class="mod-items">AWS (EC2 · VPC · RDS · S3 · CloudWatch · IAM · Secrets Manager · Security Groups · Elastic IP)</div>
           </div>
+
           <div class="module">
             <div class="mod-title">Systems</div>
-            <div class="mod-items">Windows 10/11 · Ubuntu · Debian · Linux CLI · SSH</div>
+            <div class="mod-items">Linux (Ubuntu · Debian · Amazon Linux) · Windows · Active Directory · Group Policy · SSH</div>
           </div>
+
           <div class="module">
-            <div class="mod-title">Networking &amp; cloud</div>
-            <div class="mod-items">REST APIs · DNS/VPN/Firewall · AWS (IAM, EC2, S3, VPC, CloudWatch)</div>
+            <div class="mod-title">Networking &amp; Security</div>
+            <div class="mod-items">TCP/IP · DNS · VPN · Firewall · Routing · Network Segmentation · WireGuard · Cloudflare Tunnel</div>
           </div>
+
           <div class="module">
-            <div class="mod-title">Virtualization</div>
+            <div class="mod-title">Virtualization &amp; Containers</div>
             <div class="mod-items">Proxmox VE · Docker · LXC · Portainer · VirtualBox</div>
           </div>
+
           <div class="module">
             <div class="mod-title">Tools</div>
-            <div class="mod-items">Git · Cloudflare Tunnel · TeamViewer · AnyDesk · Parsec · Recuva</div>
+            <div class="mod-items">Git · TeamViewer · AnyDesk · Parsec · Recuva</div>
           </div>
-        </div>
 
+          <div class="module">
+            <div class="mod-title">Support &amp; Troubleshooting</div>
+            <div class="mod-items">Root-Cause Analysis · Incident Triage · Log Analysis · Escalation Handling · Client Communication</div>
+          </div>
       </div>
     </div>
   </section>
@@ -436,6 +446,7 @@
             <li>Produced LAN infrastructure documentation and hardware/software requirements for an E-Office deployment.</li>
             <li>Performed secure backup, restoration, and file recovery to support operational continuity.</li>
             <li>Diagnosed and resolved Windows, software, hardware, and basic network issues for end users.</li>
+            <li>Integrated Minutes.ai with Claude AI to automate meeting note-taking and generate structured meeting minutes.</li>
           </ul>
         </div>
 
@@ -464,52 +475,33 @@
         <h2 class="sec-title">What I build when there's no ticket to close.</h2>
       </div>
 
-        <!-- 1. Homelab -->
+      <!-- 1. Flask Application on EC2 with Private RDS & Secrets Manager -->
 
       <div class="project-card reveal">
         <div class="project-head">
-          <div class="project-title">Enterprise Homelab Infrastructure</div>
-          <span class="badge live">ongoing</span>
-        </div>
-        <div class="stack-row">
-          <span class="chip">Proxmox VE</span>
-          <span class="chip">Docker</span>
-          <span class="chip">LXC</span>
-          <span class="chip">Portainer</span>
-          <span class="chip">Cloudflare Tunnel</span>
-          <span class="chip">Samba/NFS</span>
-        </div>
-        <ul class="log-list">
-          <li>Built a virtualized infrastructure on Proxmox VE hosting Linux VMs and LXC containers.</li>
-          <li>Deployed Docker workloads via Portainer, including Jellyfin, Pi-hole, Radarr, and Sonarr.</li>
-          <li>Configured Cloudflare Tunnel, DDNS, Samba/NFS shares, firewall rules, snapshots, and secure remote administration.</li>
-          <li>Ongoing sandbox for practicing Linux administration, containerization, networking, and cloud concepts.</li>
-        </ul>
-      </div>
-
-        <!-- 2. Sha News -->
-
-      <div class="project-card reveal">
-        <div class="project-head">
-          <div class="project-title">Sha News — Fake News Detection</div>
+          <div class="project-title"><a href="https://github.com/devarshinichite/aws-cloud-journey/tree/main/Reverse%20Proxy%20-%20flask%20application%20with%20RDS" target="_blank">Asset Manager - Flask application</a></div>
           <span class="badge">Resolved</span>
         </div>
         <div class="stack-row">
+          <span class="chip">Amazon RDS</span>
+          <span class="chip">AWS Secrets Manager</span>
+          <span class="chip">IAM Role and Policy</span>
           <span class="chip">Python</span>
           <span class="chip">Flask</span>
-          <span class="chip">Scikit-learn</span>
-          <span class="chip">Pandas / NumPy</span>
-          <span class="chip">Jupyter Notebook</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Nginx</span>
+          <span class="chip">Gunicorn</span>
+          <span class="chip">systemd</span>
         </div>
         <ul class="log-list">
-          <li>Built a web app that classifies news articles as real or fake using a trained machine learning model.</li>
-          <li>Used Pandas and NumPy for data preprocessing and feature preparation, with Jupyter Notebook for model development and experimentation.</li>
-          <li>Built the Flask frontend and backend to process user input and return predictions in real time.</li>
-          <li>Tested and debugged application functionality to improve reliability and prediction accuracy.</li>
+          <li>Designed and deployed a multi-tier AWS architecture with Flask on public EC2 and MySQL RDS isolated in private subnets.</li>
+          <li>Configured Nginx reverse proxy and Gunicorn with systemd for production-style application deployment.</li>
+          <li>Implemented an EC2 IAM instance profile to retrieve secrets dynamically from AWS Secrets Manager, removing hardcoded credentials.</li>
+          <li>Configured security-group chaining so RDS accepts MySQL traffic only from the application server; resolved IAM AccessDeniedException and database connectivity timeouts.</li>
         </ul>
       </div>
 
-        <!-- 3. Homelab VPN --> 
+        <!-- 2. Homelab VPN --> 
 
       <div class="project-card reveal">
         <div class="project-head">
@@ -536,6 +528,29 @@
         </ul>
       </div>
 
+      <!-- 3. Homelab -->
+
+      <div class="project-card reveal">
+        <div class="project-head">
+          <div class="project-title">Enterprise Homelab Infrastructure</div>
+          <span class="badge">Resolved</span>
+        </div>
+        <div class="stack-row">
+          <span class="chip">Proxmox VE</span>
+          <span class="chip">Docker</span>
+          <span class="chip">LXC</span>
+          <span class="chip">Portainer</span>
+          <span class="chip">Cloudflare Tunnel</span>
+          <span class="chip">Samba/NFS</span>
+        </div>
+        <ul class="log-list">
+          <li>Built a virtualized infrastructure on Proxmox VE hosting Linux VMs and LXC containers.</li>
+          <li>Deployed Docker workloads via Portainer, including Jellyfin, Pi-hole, Radarr, and Sonarr.</li>
+          <li>Configured Cloudflare Tunnel, DDNS, Samba/NFS shares, firewall rules, snapshots, and secure remote administration.</li>
+          <li>Ongoing sandbox for practicing Linux administration, containerization, networking, and cloud concepts.</li>
+        </ul>
+      </div>
+
       <div class="sec-head reveal" style="margin-top:56px; margin-bottom:24px;">
         <div class="sec-tag">// education &amp; certification</div>
       </div>
@@ -543,12 +558,12 @@
         <div class="module">
           <div class="mod-title">Education</div>
           <div class="cred-title">B.Sc. Information Technology</div>
-          <div class="mod-items">D.G. Ruparel College of Arts, Science and Commerce · 2020–2023 · CGPA 7.92/10</div>
+          <div class="mod-items">D.G. Ruparel College of Arts, Science and Commerce · 2020–2024 · CGPA 7.92/10</div>
         </div>
         <div class="module">
           <div class="mod-title">Certification</div>
           <div class="cred-title">AWS Certified Cloud Practitioner</div>
-          <div class="mod-items">ID: e35d233da23944a28832cd5c93296076 · Verified via Credly &amp; AWS</div>
+          <div class="mod-items">ID: e35d233da23944a28832cd5c93296076 · Verified via <a href="https://www.credly.com/badges/dccb3b3f-c8e9-49cc-a7cc-2af72f4c58c6" target="_blank"><u>Credly</u></a> &amp; <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/e35d233da23944a28832cd5c93296076" target="_blank"><u>AWS</u></a></div>
         </div>
         <div class="module">
           <div class="mod-title">Achievement</div>
@@ -594,7 +609,6 @@
 
 <footer class="wrap">
   <span>© <span id="year"></span> Devarshi Nichite</span>
-  <span>Maharashtra, India · +91-8975135689</span>
   <span>This site was created with the assistance of AI.</span>
 </footer>
 
