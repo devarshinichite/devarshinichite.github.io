@@ -129,6 +129,28 @@
   .btn-ghost{border-color:var(--line); color:var(--text); background:var(--panel);}
   .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px);}
 
+  /* ---------- PORTRAIT ---------- */
+  .hero-layout{display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.8fr); align-items: center; gap: 48px;}
+  .hero-content{min-width: 0;}  
+  .hero-portrait{display: flex;justify-content: center;align-items: center;}
+  
+  .hero-portrait img{
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 760px){
+  .hero-layout{grid-template-columns: 1fr; gap: 32px;}
+  .hero-portrait{justify-content: flex-start;}
+  .hero-portrait img{max-width: 240px;}
+}
+
   /* Status dashboard panel */
   .status-panel{
     margin-top:64px;
@@ -237,6 +259,17 @@
   .cred-card .cred-title{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px; margin-top:8px;}
   .cred-card .cred-sub{color:var(--muted); font-size:13.5px; margin-top:4px;}
 
+  /* ---------- AWS-BADGE ---------- */
+  .achievement-content{display: flex; align-items: center; justify-content: space-between; gap: 20px;}
+  .achievement-text{flex: 1; min-width: 0;}
+
+  .aws-badge{width: 115px; height: auto; object-fit: contain; flex-shrink: 0;}
+
+  @media (max-width: 520px){
+  .achievement-content{flex-direction: column; align-items: flex-start;}
+  .aws-badge{width: 100px;}
+  }
+
   /* ---------- CONTACT ---------- */
   .contact-panel{
     border:1px solid var(--line); border-radius:14px;
@@ -325,13 +358,19 @@
   <section id="home" class="hero">
     <div class="wrap">
       <div class="eyebrow"><span class="b"></span>OPEN TO CLOUD SUPPORT · JR, SYSADMIN · IT INFRASTRUCTURE ROLES · SUPPORT ENGINEER · DEVOPS ENGINEER</div>
-      <h1>Keeping systems <span class="accent">online</span>, secure, and easy to run.</h1>
-      <div class="role-line mono">
-        <span id="typeTarget"></span><span class="cursor"></span>
+        <div class="hero-layout">
+          <div class="hero-content">
+            <h1>Keeping systems <span class="accent">online</span>, secure, and easy to run.</h1>
+            <div class="role-line mono">
+              <span id="typeTarget"></span><span class="cursor"></span>
+            </div>
+              <p class="lede">IT Support Engineer transitioning into Cloud & DevOps with hands-on experience building and troubleshooting AWS infrastructure. 
+                Experienced in Linux, networking, application deployment, and root-cause analysis, with practical AWS projects involving EC2, VPC, RDS, Secrets Manager, IAM, Nginx, Gunicorn, and WireGuard</p>
+          </div>
+          <div class="hero-portrait">
+            <img src="images/devarshi-portrait.jpg" alt="Portrait of Devarshi Nichite">
+          </div>
       </div>
-      <p class="lede">IT Support Engineer transitioning into Cloud & DevOps with hands-on experience building and troubleshooting AWS infrastructure.
-        Experienced in Linux, networking, application deployment, and root-cause analysis, with practical AWS projects involving EC2, VPC, RDS, Secrets Manager, IAM, Nginx, Gunicorn, and WireGuard</p>
-
       <div class="hero-actions">
         <a href="Devarshi_Nichite_Resume.pdf" download class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5V10.5M8 10.5L4.5 7M8 10.5L11.5 7M2 13.5H14" stroke="#0B1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -561,15 +600,21 @@
           <div class="mod-items">D.G. Ruparel College of Arts, Science and Commerce · 2020–2024 · CGPA 7.92/10</div>
         </div>
         <div class="module">
-          <div class="mod-title">Certification</div>
-          <div class="cred-title">AWS Certified Cloud Practitioner</div>
-          <div class="mod-items">ID: e35d233da23944a28832cd5c93296076 · Verified via <a href="https://www.credly.com/badges/dccb3b3f-c8e9-49cc-a7cc-2af72f4c58c6" target="_blank"><u>Credly</u></a> &amp; <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/e35d233da23944a28832cd5c93296076" target="_blank"><u>AWS</u></a></div>
-        </div>
-        <div class="module">
           <div class="mod-title">Achievement</div>
           <div class="cred-title">Top 4 Finish — DotTech Festival Hackathon (2023)</div>
           <div class="mod-items">Built "Jungle Safari," a system developed in Java with JDBC, using NetBeans IDE.</div>
         </div>
+        <div class="module achievement-module">
+          <div class="mod-title">Certification</div>
+          <div class="achievement-content">
+            <div class="achievement-text">
+              <div class="cred-title">
+                AWS Certified Cloud Practitioner
+              </div>
+              <div class="mod-items">ID: e35d233da23944a28832cd5c93296076 · Verified via <a href="https://www.credly.com/badges/dccb3b3f-c8e9-49cc-a7cc-2af72f4c58c6" target="_blank"><u>Credly</u></a> &amp; <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/e35d233da23944a28832cd5c93296076" target="_blank"><u>AWS</u></a></div>
+            </div>
+            <img class="aws-badge" src="images/aws-cloud-practitioner.png" alt="AWS Certified Cloud Practitioner badge" loading="lazy">
+          </div>
       </div>
     </div>
   </section>
