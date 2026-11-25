@@ -422,43 +422,38 @@
         </div>
         <div class="skill-modules reveal">
           <div class="module">
-            <div class="mod-title">Languages &amp; Databases</div>
-            <div class="mod-items">Python · HTML · CSS · MySQL</div>
+            <div class="mod-title">Programming &amp; Webserver</div>
+            <div class="mod-items">Python · Bash · Flask · MySQL · Nginx · Gunicorn</div>
           </div>
 
           <div class="module">
-            <div class="mod-title">CI/CD &amp; Web Servers</div>
-            <div class="mod-items">Jenkins (Freestyle, Pipeline, Multibranch) · Flask · Nginx · Gunicorn </div>
+            <div class="mod-title">Cloud</div>
+            <div class="mod-items">AWS (EC2 · VPC · RDS · S3 · CloudWatch · IAM · Secrets Manager · Security Groups)</div>
           </div>
 
           <div class="module">
-            <div class="mod-title">Cloud &amp; Infrastructure</div>
-            <div class="mod-items">AWS (EC2 · VPC · RDS · S3 · CloudWatch · IAM · Secrets Manager · Security Groups · Elastic IP)</div>
+            <div class="mod-title">CI/CD &amp; Version Control</div>
+            <div class="mod-items">Jenkins · SonarQube · Git · GitHub</div>
           </div>
 
           <div class="module">
-            <div class="mod-title">Systems</div>
-            <div class="mod-items">Linux (Ubuntu · Debian · Amazon Linux) · Windows · Active Directory · Group Policy · SSH</div>
-          </div>
-
-          <div class="module">
-            <div class="mod-title">Networking &amp; Security</div>
-            <div class="mod-items">TCP/IP · DNS · VPN · Firewall · Routing · Network Segmentation · Sonarqube · WireGuard · Cloudflare Tunnel</div>
+            <div class="mod-title">Infrastructure &amp; Systems</div>
+            <div class="mod-items">Linux · Windows Server · Active Directory · Group Policy</div>
           </div>
 
           <div class="module">
             <div class="mod-title">Virtualization &amp; Containers</div>
-            <div class="mod-items">Proxmox VE · Docker · LXC · Portainer · VirtualBox</div>
+            <div class="mod-items">Docker · Proxmox VE · LXC · VirtualBox</div>
           </div>
 
           <div class="module">
-            <div class="mod-title">Tools</div>
-            <div class="mod-items">Git · TeamViewer · AnyDesk · Parsec · Recuva</div>
+            <div class="mod-title">Networking &amp; Security</div>
+            <div class="mod-items">TCP/IP · DNS · VPN · SSH · NFS · Firewall · Network Segmentation · WireGuard · Cloudflare Tunnel</div>
           </div>
 
           <div class="module">
             <div class="mod-title">Support &amp; Troubleshooting</div>
-            <div class="mod-items">Root-Cause Analysis · Incident Triage · Log Analysis · Escalation Handling · Client Communication</div>
+            <div class="mod-items">Root-Cause Analysis · Incident Triage · Log Analysis · Escalation Handling</div>
           </div>
       </div>
     </div>
@@ -522,6 +517,7 @@
           <span class="badge">Resolved</span>
         </div>
         <div class="stack-row">
+          <span class="chip">AWS EC2</span>
           <span class="chip">Amazon RDS</span>
           <span class="chip">AWS Secrets Manager</span>
           <span class="chip">IAM Role and Policy</span>
@@ -530,7 +526,6 @@
           <span class="chip">MySQL</span>
           <span class="chip">Nginx</span>
           <span class="chip">Gunicorn</span>
-          <span class="chip">systemd</span>
         </div>
         <ul class="log-list">
           <li>Designed and deployed a multi-tier AWS architecture with Flask on public EC2 and MySQL RDS isolated in private subnets.</li>
@@ -549,12 +544,12 @@
         </div>
         <div class="stack-row">
           <span class="chip">WireGuard</span>
-          <span class="chip">Linux (Ubuntu/Debian)</span>
-          <span class="chip">Amazon EC2</span>
-          <span class="chip">AWS VPC &amp; Routing</span>
+          <span class="chip">Linux</span>
+          <span class="chip">AWS EC2</span>
+          <span class="chip">VPC</span>
           <span class="chip">iptables / NAT</span>
           <span class="chip">Monitoring &amp; Logging</span>
-          <span class="chip">Key Management / Zero-trust</span>
+          <span class="chip">Key Management</span>
         </div>
         <ul class="log-list">
           <li>Built a secure VPN solution for the homelab using WireGuard.</li>
@@ -567,20 +562,47 @@
         </ul>
       </div>
 
-      <!-- 3. Homelab -->
+      <!-- 3. Jenkins and Sonarqube -->
 
       <div class="project-card reveal">
         <div class="project-head">
-          <div class="project-title">Enterprise Homelab Infrastructure</div>
+          <div class="project-title"> <a href="https://github.com/devarshinichite/jenkins-practice" target="_blank">Jenkins CI/CD & SonarQube Code Quality Labs</a></div>
+          <span class="badge">Resolved</span>
+        </div>
+        <div class="stack-row">
+          <span class="chip">Jenkins</span>
+          <span class="chip">SonarQube</span>
+          <span class="chip">Python</span>
+          <span class="chip">AWS EC2</span>
+          <span class="chip">Docker</span>
+          <span class="chip">PostgreSQL</span>
+        </div>
+        <ul class="log-list">
+          <li>Configured and explored Jenkins Freestyle, Pipeline and Multibranch Pipeline jobs across local, Docker and AWS EC2 environments.</li>
+          <li>Deployed SonarQube Community Edition with PostgreSQL on AWS EC2 to perform static code analysis on a Python application.</li>
+          <li>Configured SonarQube Quality Gates with an overall code coverage threshold of 80%, and analysed code quality and security findings.</li>
+          <li>Investigated code analysis results, addressed identified security issues and performed subsequent scans to evaluate improvements.</li>
+        </ul>
+      </div>
+
+      <!-- Additional Project (4. Homelab) -->
+
+      <div class="sec-head reveal" style="margin-top:56px; margin-bottom:24px;">
+        <div class="sec-tag">// additional project</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-head">
+          <div class="project-title">Enterprise Style Homelab Infrastructure</div>
           <span class="badge">Resolved</span>
         </div>
         <div class="stack-row">
           <span class="chip">Proxmox VE</span>
+          <span class="chip">Linux</span>
           <span class="chip">Docker</span>
           <span class="chip">LXC</span>
-          <span class="chip">Portainer</span>
-          <span class="chip">Cloudflare Tunnel</span>
           <span class="chip">Samba/NFS</span>
+          <span class="chip">Cloudflare Tunnel</span>
         </div>
         <ul class="log-list">
           <li>Built a virtualized infrastructure on Proxmox VE hosting Linux VMs and LXC containers.</li>
@@ -590,6 +612,8 @@
         </ul>
       </div>
 
+      <!-- Certification & Education -->
+       
       <div class="sec-head reveal" style="margin-top:56px; margin-bottom:24px;">
         <div class="sec-tag">// education &amp; certification</div>
       </div>
